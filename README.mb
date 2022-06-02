@@ -1,0 +1,7 @@
+Text Replacer:
+
+My plan with this project is to open files types .doc and .txt, find keywords within them, and replace those keywords.
+
+This program idea stems from the tiresome process of creating cover letters that address specific companies and positions.
+
+After I create the initial functions to accomplish this task, I plan turn it into a CLI-ran module by creating an argument parser.
