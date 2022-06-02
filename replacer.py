@@ -1,7 +1,7 @@
-from xml.dom.minidom import Document
 from docx import Document
 from easygui import fileopenbox
 from fileinput import FileInput
+import textract
 
 
 def text_replacer(search, change):
@@ -36,8 +36,9 @@ def text_replacer(search, change):
         else:
             print("Still working on that feature!")
 
-            # Open and read .docx file
-
+            # Start file stream and create copy of document.
+            document = Document(f'{file_path}')
+            document.save('new_text.docx')
             # Search for keywords
 
             # Replace keywords with change
