@@ -1,5 +1,6 @@
+from dataclasses import replace
 from easygui import fileopenbox
-from pip import main
+from fileinput import FileInput
 
 
 def text_replacer(search, change):
@@ -18,12 +19,17 @@ def text_replacer(search, change):
 
     elif file_path_checker[1] == 'txt':
 
-        # Open and read document
-        file_text = open(file_path, mode='r').read()
-        print(file_text)
+        # Open, read, overwrite keywords, save.
+        with FileInput(file_path, inplace=True) as file:
+            for line in file:
+                print(line.replace(search, change))
+
+        print(f'All instances of {search} have been replaced with {change}!')
 
     else:
         print("Still working on that feature!")
+
+        # Open and read .docx file
 
         # Search for keywords
 
@@ -32,4 +38,4 @@ def text_replacer(search, change):
         # Save file
 
 
-text_replacer(1, 1)
+text_replacer('POSITION', 'software developer')
