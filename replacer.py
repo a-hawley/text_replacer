@@ -1,7 +1,6 @@
-from docx import Document
+import aspose.words as aw
 from easygui import fileopenbox
 from fileinput import FileInput
-import textract
 
 
 def text_replacer(search, change):
@@ -37,8 +36,16 @@ def text_replacer(search, change):
             print("Still working on that feature!")
 
             # Start file stream and create copy of document.
-            document = Document(f'{file_path}')
-            document.save('new_text.docx')
+
+            # load Word document
+            doc = aw.Document(file_path)
+
+            # replace text
+            doc.range.replace(search, change, aw.replacing.FindReplaceOptions(
+                aw.replacing.FindReplaceDirection.FORWARD))
+
+            # save the modified document
+            doc.save("updated.docx")
             # Search for keywords
 
             # Replace keywords with change
@@ -46,4 +53,4 @@ def text_replacer(search, change):
             # Save file
 
 
-text_replacer('POSITION', 'software developer')
+text_replacer('COMPANY', 'Dinosaur Inc')
