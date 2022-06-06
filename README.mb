@@ -11,3 +11,5 @@ pip uninstall docx (if installed)
 pip uninstall lxml
 pip install lxml
 pip install python-docx
+
+UPDATE 6/5: It turns out there is no reasonable solution to replacing text in .docx files while keeping the format. They exist, but are exhaustingly complicated for the little good they would do. This is will likely be my last update for this project.
