@@ -1,4 +1,4 @@
-import aspose.words as aw
+from docx import Document
 from easygui import fileopenbox
 from fileinput import FileInput
 
@@ -34,23 +34,22 @@ def text_replacer(search, change):
 
         else:
             print("Still working on that feature!")
+            doc = Document(file_path)
+            doc.save('UpdatedCoverLetter.docx')
+            doc = Document('UpdatedCoverLetter.docx')
 
-            # Start file stream and create copy of document.
+            for p in doc.paragraphs:
+                if search in p.text:
+                    inline = p.runs
+                    # Loop added to work with runs (strings with same style)
+                    for i in range(len(inline)):
+                        if search in inline[i].text:
+                            text = inline[i].text.replace(
+                                search, change)
+                            print(text)
+                            inline[i].text = text
 
-            # load Word document
-            doc = aw.Document(file_path)
-
-            # replace text
-            doc.range.replace(search, change, aw.replacing.FindReplaceOptions(
-                aw.replacing.FindReplaceDirection.FORWARD))
-
-            # save the modified document
-            doc.save("updated.docx")
-            # Search for keywords
-
-            # Replace keywords with change
-
-            # Save file
+            doc.save('UpdatedCoverLetter.docx')
 
 
-text_replacer('COMPANY', 'Dinosaur Inc')
+text_replacer('company', 'wonko')
