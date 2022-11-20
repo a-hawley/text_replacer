@@ -6,7 +6,7 @@ This program idea stems from the tiresome process of creating cover letters that
 
 After I create the initial functions to accomplish this task, I plan turn it into a CLI-ran module by creating an argument parser.
 
-UPDATE 6/2: .docx parsing will be preformed through the docx Python library; however, there are some issues with the lxml. Therefore, you shoul make sure that your lxml is up to date by executing the following commands:
+UPDATE 6/2: .docx parsing will be preformed through the docx Python library; however, there are some issues with the lxml. Therefore, you should make sure that your lxml is up to date by executing the following commands:
 pip uninstall docx (if installed)
 pip uninstall lxml
 pip install lxml
